@@ -3,10 +3,13 @@ title: "INFO523-R-EX1-KashyapNadendla"
 format:
   html:
     theme: default
+    author: "Kashyap Sai Prasad Nadendla"
 ---
 
+## Find which version of R you are using
+
 ```{r}
-##Find which version of R you are using
+##
 
 R.version
 ```
@@ -75,9 +78,9 @@ library(dplyr)
 #update.packages(ask = FALSE)
 ```
 
-```{r}
-##R Objects and Variables
+## R Objects and Variables
 
+```{r}
 vat <- 0.2
 ```
 
@@ -116,9 +119,9 @@ objects()
 rm(vat)
 ```
 
-```{r}
 ## R Functions
 
+```{r}
 max(4, 5, 6, 12, -4)
 ```
 
@@ -186,9 +189,8 @@ convMeters(56.2, "yard")
 convMeters(to="yard", 56.2)
 ```
 
+## Factors
 ```{r}
-##Factors
-
 g <-c('f', 'm', 'f', 'f', 'f', 'm', 'm', 'f')
 g <- factor(g)
 ```
@@ -251,11 +253,10 @@ prop.table(t)
 prop.table(t) * 100
 ```
 
+# R data structures
+
+## Vectors
 ```{r}
-##R data structures
-
-#Vectors
-
 v <- c(2, 5, 3, 4)
 length(v)
 ```
@@ -320,9 +321,8 @@ v <- c(2, 5, 3, 4)
 sqrt(v)
 ```
 
+## Vector arithmetic
 ```{r}
-##Vector arithmetic
-
 v1 <- c(3, 6, 9)
 v2 <- c(1, 4, 8)
 v1+v2 #addition
@@ -363,11 +363,10 @@ mySum <- function(x){
 (mySum (c(1, 2, 3)))
 ```
 
+# PART II
+
+## Easy ways to generate vectors
 ```{r}
-## PART II
-
-# Easy ways to generate vectors
-
 (x <-1:10)
 ```
 
@@ -459,9 +458,8 @@ sample <- rnorm(100, mean=20, sd=4)
 se(sample)
 ```
 
+## Sub-setting
 ```{r}
-# Sub-setting
-
 x <- c(0, -3, 4, -1, 45, 90, -5)
 (gtzero <- x[x>0])
 ```
@@ -506,9 +504,8 @@ x <- c(0, -3, 4, -1, 45, 90, -5)
 (x[-(1:3)])
 ```
 
+## Named elements
 ```{r}
-# Named elements
-
 x <- c(0, -3, 4, -1, 45, 90, -5)
 names(x) <- c('s1', 's2', 's3', 's4', 's5', 's6', 's7')
 x
@@ -543,12 +540,10 @@ pH
 
 ```
 
+# More R Data Structures
+
+## Matrices and Arrays
 ```{r}
-
-## More R Data Structures
-
-# Matrices and Arrays
-
 m <- c(45, 23, 66, 77, 33, 44, 56, 12, 78, 23)
 is.vector(m)
 ```
@@ -670,9 +665,8 @@ m2 <- cbind (c(1,2,3), c(4, 5, 6))
 m3 <- cbind (m1[,1], m2[2,])
 ```
 
-```{r}
 ## Named rows and columns
-
+```{r}
 sales <- matrix(c(10, 30, 40, 50, 43, 56, 21, 30), 2, 4, byrow=TRUE)
 colnames(sales) <- c('1qrt', '2qrt', '3qrt', '4qrt')
 rownames(sales) <- c('store1', 'store2')
@@ -687,11 +681,10 @@ sales['store1', '1qrt']
 sales['store2', c('1qrt', '4qrt')]
 ```
 
+# Arrays
+
+## 3-D array
 ```{r}
-## Arrays
-
-# 3-D array
-
 a <- array(1:48, dim= c(4, 3, 2))
 a
 ```
@@ -778,9 +771,8 @@ matrix1/c(1, 2, 3)
 matrix1/c(1, 2, 3, 1, 2, 3, 1, 2, 3)
 ```
 
-```{r}
 ## Lists
-
+```{r}
 mylist <- list(stud.id=34453,
                stud.name="John",
                stud.marks= c(13, 3, 12, 15, 19)
@@ -810,9 +802,8 @@ mylist[handle]
 mylist[["stud.id"]]
 ```
 
-```{r}
 ## Interact with $
-
+```{r}
 mylist <- list(stud.id=34453,
                stud.name="John",
                stud.marks= c(13, 3, 12, 15, 19)
@@ -894,9 +885,8 @@ is.atomic(mylist)
 is.list(unlist(mylist))
 ```
 
-```{r}
 ## Dataframes
-
+```{r}
 my.dataframe <- data.frame(site=c('A', 'B', 'A','A', 'B'),
                            season=c('winter', 'summer', 'summer', 'spring', 'fall'),                               ph = c(7.4, 6.3, 8.6, 7.2, 8.9))
 my.dataframe
@@ -928,9 +918,8 @@ my.dataframe[my.dataframe$ph>7, 'site']
 my.dataframe[my.dataframe$ph>7, c('site', 'ph')]
 ```
 
+## Use subset() to query a data frame
 ```{r}
-# Use subset() to query a data frame
-
 subset(my.dataframe, ph>7)
 ```
 
@@ -953,9 +942,8 @@ my.dataframe[my.dataframe$season=='summer' & my.dataframe$ph>8, 'ph'] <- my.data
 my.dataframe[my.dataframe$season=='summer', 'ph']                             
 ```
 
+## Add a column
 ```{r}
-# Add a column
-
 my.dataframe$NO3 <- c(234.5, 123.4, 456.7, 567.8, 789.0)
 my.dataframe
 ```
@@ -1000,9 +988,8 @@ names(my.dataframe)[3] <- 'ph'
 my.dataframe 
 ```
 
+## Tibbles
 ```{r}
-#Tibbles
-
 #install.packages("tibble")
 ```
 
@@ -1100,9 +1087,8 @@ class(pe[1:15, c("bill_length_mm")])
 class(penguins[1:15, c("bill_length_mm")])
 ```
 
+## dplyr
 ```{r}
-##dplyr
-
 #install.packages("dplyr")
 library(dplyr)
 ```
